@@ -1,0 +1,1 @@
+C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\raylib-sys-364e39b018c510c0\out\build\raylib\external\glfw\src\glfw.dir\Release\glfw.lib

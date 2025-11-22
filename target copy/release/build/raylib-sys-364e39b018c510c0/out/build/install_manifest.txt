@@ -1,0 +1,7 @@
+C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/lib/raylib.lib
+C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/include/raylib.h
+C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/include/rlgl.h
+C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/include/raymath.h
+C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/lib/pkgconfig/raylib.pc
+C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/lib/cmake/raylib/raylib-config-version.cmake
+C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/lib/cmake/raylib/raylib-config.cmake

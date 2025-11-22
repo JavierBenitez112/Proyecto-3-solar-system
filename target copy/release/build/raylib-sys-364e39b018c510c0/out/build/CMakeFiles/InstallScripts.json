@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/build/cmake_install.cmake",
+		"C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/build/raylib/cmake_install.cmake",
+		"C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/build/raylib/external/glfw/cmake_install.cmake",
+		"C:/Users/javib/OneDrive/Escritorio/Lab5-/target/release/build/raylib-sys-364e39b018c510c0/out/build/raylib/external/glfw/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

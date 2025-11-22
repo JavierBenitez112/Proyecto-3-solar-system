@@ -82,7 +82,11 @@ impl Framebuffer {
         }
     }
 
-    pub fn get_texture(&self) -> Option<&Texture2D> {
-        self.texture.as_ref()
+    pub fn draw_to(&self, d: &mut RaylibDrawHandle) {
+        if let Some(texture) = &self.texture {
+            d.draw_texture(texture, 0, 0, Color::WHITE);
+        } else {
+            panic!("Framebuffer texture has not been initialized. Call init_texture after creating the RaylibHandle.");
+        }
     }
 }

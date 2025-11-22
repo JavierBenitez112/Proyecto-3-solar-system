@@ -1,0 +1,14 @@
+C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\deps\clang_sys-a704adde02602cdd.d: C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\lib.rs C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\support.rs C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\link.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/macros.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/common.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/dynamic.rs
+
+C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\deps\libclang_sys-a704adde02602cdd.rlib: C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\lib.rs C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\support.rs C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\link.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/macros.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/common.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/dynamic.rs
+
+C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\deps\libclang_sys-a704adde02602cdd.rmeta: C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\lib.rs C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\support.rs C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\link.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/macros.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/common.rs C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/dynamic.rs
+
+C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\lib.rs:
+C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\support.rs:
+C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\clang-sys-1.8.1\src\link.rs:
+C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/macros.rs:
+C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/common.rs:
+C:\Users\javib\OneDrive\Escritorio\Lab5-\target\release\build\clang-sys-34343fd1ed8df2e3\out/dynamic.rs:
+
+# env-dep:OUT_DIR=C:\\Users\\javib\\OneDrive\\Escritorio\\Lab5-\\target\\release\\build\\clang-sys-34343fd1ed8df2e3\\out

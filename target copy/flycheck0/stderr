@@ -1,0 +1,139 @@
+    Blocking waiting for file lock on build directory
+   2.142380700s  INFO prepare_target{force=false package_id=computer-graphics-v3 v0.1.0 (C:\Users\javib\OneDrive\Escritorio\Lab5-) target="computer-graphics-v3"}: cargo::core::compiler::fingerprint: dependency on `build_script_build` is newer than we are 13408307786.106424500s > 13407986070.524412100s "C:\\Users\\javib\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\raylib-sys-5.5.1"
+   2.146833200s  INFO prepare_target{force=false package_id=computer-graphics-v3 v0.1.0 (C:\Users\javib\OneDrive\Escritorio\Lab5-) target="computer-graphics-v3"}: cargo::core::compiler::fingerprint: fingerprint dirty for computer-graphics-v3 v0.1.0 (C:\Users\javib\OneDrive\Escritorio\Lab5-)/Check { test: false }/TargetInner { name: "computer-graphics-v3", doc: true, ..: with_path("C:\\Users\\javib\\OneDrive\\Escritorio\\Lab5-\\src\\main.rs", Edition2024) }
+   2.146884200s  INFO prepare_target{force=false package_id=computer-graphics-v3 v0.1.0 (C:\Users\javib\OneDrive\Escritorio\Lab5-) target="computer-graphics-v3"}: cargo::core::compiler::fingerprint:     dirty: UnitDependencyInfoChanged { old_name: "raylib", old_fingerprint: 14000794912722475505, new_name: "raylib", new_fingerprint: 13751063799588649797 }
+   2.148023700s  INFO prepare_target{force=false package_id=raylib v5.5.1 target="raylib"}: cargo::core::compiler::fingerprint: fingerprint dirty for raylib v5.5.1/Check { test: false }/TargetInner { ..: lib_target("raylib", ["lib"], "C:\\Users\\javib\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\raylib-5.5.1\\src\\lib.rs", Edition2018) }
+   2.148060400s  INFO prepare_target{force=false package_id=raylib v5.5.1 target="raylib"}: cargo::core::compiler::fingerprint:     dirty: UnitDependencyInfoChanged { old_name: "raylib_sys", old_fingerprint: 16766144841386592522, new_name: "raylib_sys", new_fingerprint: 2464401632557106971 }
+   2.149988500s  INFO prepare_target{force=false package_id=raylib-sys v5.5.1 target="raylib_sys"}: cargo::core::compiler::fingerprint: fingerprint dirty for raylib-sys v5.5.1/Check { test: false }/TargetInner { ..: lib_target("raylib_sys", ["lib"], "C:\\Users\\javib\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\raylib-sys-5.5.1\\src\\lib.rs", Edition2018) }
+   2.150019500s  INFO prepare_target{force=false package_id=raylib-sys v5.5.1 target="raylib_sys"}: cargo::core::compiler::fingerprint:     dirty: UnitDependencyInfoChanged { old_name: "build_script_build", old_fingerprint: 8614851319231380035, new_name: "build_script_build", new_fingerprint: 7696612668551250949 }
+   2.151283200s  INFO prepare_target{force=false package_id=raylib-sys v5.5.1 target="build-script-build"}: cargo::core::compiler::fingerprint: fingerprint dirty for raylib-sys v5.5.1/RunCustomBuild/TargetInner { ..: custom_build_target("build-script-build", "C:\\Users\\javib\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\raylib-sys-5.5.1\\build.rs", Edition2018) }
+   2.151300300s  INFO prepare_target{force=false package_id=raylib-sys v5.5.1 target="build-script-build"}: cargo::core::compiler::fingerprint:     dirty: UnitDependencyInfoChanged { old_name: "build_script_build", old_fingerprint: 17898375023658052460, new_name: "build_script_build", new_fingerprint: 17119655276010647403 }
+   2.151873400s  INFO prepare_target{force=false package_id=raylib-sys v5.5.1 target="build-script-build"}: cargo::core::compiler::fingerprint: fingerprint dirty for raylib-sys v5.5.1/Build/TargetInner { ..: custom_build_target("build-script-build", "C:\\Users\\javib\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\raylib-sys-5.5.1\\build.rs", Edition2018) }
+   2.151887700s  INFO prepare_target{force=false package_id=raylib-sys v5.5.1 target="build-script-build"}: cargo::core::compiler::fingerprint:     dirty: UnitDependencyInfoChanged { old_name: "bindgen", old_fingerprint: 18282131936914103460, new_name: "bindgen", new_fingerprint: 17595600639436672626 }
+   2.152659300s  INFO prepare_target{force=false package_id=bindgen v0.70.1 target="bindgen"}: cargo::core::compiler::fingerprint: fingerprint dirty for bindgen v0.70.1/Build/TargetInner { ..: lib_target("bindgen", ["lib"], "C:\\Users\\javib\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bindgen-0.70.1\\lib.rs", Edition2018) }
+   2.152680900s  INFO prepare_target{force=false package_id=bindgen v0.70.1 target="bindgen"}: cargo::core::compiler::fingerprint:     dirty: UnitDependencyInfoChanged { old_name: "build_script_build", old_fingerprint: 9237661255468217608, new_name: "build_script_build", new_fingerprint: 2562452644691780254 }
+   2.154812600s  INFO prepare_target{force=false package_id=bindgen v0.70.1 target="build-script-build"}: cargo::core::compiler::fingerprint: fingerprint dirty for bindgen v0.70.1/RunCustomBuild/TargetInner { ..: custom_build_target("build-script-build", "C:\\Users\\javib\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bindgen-0.70.1\\build.rs", Edition2018) }
+   2.154851800s  INFO prepare_target{force=false package_id=bindgen v0.70.1 target="build-script-build"}: cargo::core::compiler::fingerprint:     dirty: EnvVarChanged { name: "BINDGEN_EXTRA_CLANG_ARGS", old_value: Some("--include-directory=\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\" --include-directory=\"C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\""), new_value: None }
+   2.173746900s  INFO prepare_target{force=false package_id=computer-graphics-v3 v0.1.0 (C:\Users\javib\OneDrive\Escritorio\Lab5-) target="computer-graphics-v3"}: cargo::core::compiler::fingerprint: fingerprint error for computer-graphics-v3 v0.1.0 (C:\Users\javib\OneDrive\Escritorio\Lab5-)/Check { test: true }/TargetInner { name: "computer-graphics-v3", doc: true, ..: with_path("C:\\Users\\javib\\OneDrive\\Escritorio\\Lab5-\\src\\main.rs", Edition2024) }
+   2.173778300s  INFO prepare_target{force=false package_id=computer-graphics-v3 v0.1.0 (C:\Users\javib\OneDrive\Escritorio\Lab5-) target="computer-graphics-v3"}: cargo::core::compiler::fingerprint:     err: failed to read `C:\Users\javib\OneDrive\Escritorio\Lab5-\target\debug\.fingerprint\computer-graphics-v3-7a8b13fed76b8328\test-bin-computer-graphics-v3`
+
+Caused by:
+    El sistema no puede encontrar el archivo especificado. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_path
+   6: git_filter_source_path
+   7: git_filter_source_path
+   8: git_filter_source_path
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   Compiling bindgen v0.70.1
+   Compiling raylib-sys v5.5.1
+error: failed to run custom build command for `raylib-sys v5.5.1`
+note: To improve backtraces for build dependencies, set the CARGO_PROFILE_DEV_BUILD_OVERRIDE_DEBUG=true environment variable to enable debug information generation.
+
+Caused by:
+  process didn't exit successfully: `C:\Users\javib\OneDrive\Escritorio\Lab5-\target\debug\build\raylib-sys-cbb054b55d96016b\build-script-build` (exit code: 101)
+  --- stdout
+  cargo:rerun-if-changed=build.rs
+  cargo:rerun-if-changed=./binding/binding.h
+  CMAKE_TOOLCHAIN_FILE_x86_64-pc-windows-msvc = None
+  CMAKE_TOOLCHAIN_FILE_x86_64_pc_windows_msvc = None
+  HOST_CMAKE_TOOLCHAIN_FILE = None
+  CMAKE_TOOLCHAIN_FILE = None
+  CMAKE_GENERATOR_x86_64-pc-windows-msvc = None
+  CMAKE_GENERATOR_x86_64_pc_windows_msvc = None
+  HOST_CMAKE_GENERATOR = None
+  CMAKE_GENERATOR = None
+  CMAKE_PREFIX_PATH_x86_64-pc-windows-msvc = None
+  CMAKE_PREFIX_PATH_x86_64_pc_windows_msvc = None
+  HOST_CMAKE_PREFIX_PATH = None
+  CMAKE_PREFIX_PATH = None
+  CMAKE_x86_64-pc-windows-msvc = None
+  CMAKE_x86_64_pc_windows_msvc = None
+  HOST_CMAKE = None
+  CMAKE = None
+  running: "cmake" "C:\\Users\\javib\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\raylib-sys-5.5.1\\./raylib" "-G" "Visual Studio 17 2022" "-Thost=x64" "-Ax64" "-DCMAKE_BUILD_TYPE=Debug" "-DBUILD_EXAMPLES=OFF" "-DCMAKE_BUILD_TYPE=Debug" "-DSUPPORT_BUSY_WAIT_LOOP=OFF" "-DSUPPORT_FILEFORMAT_JPG=ON" "-DUSE_WAYLAND=OFF" "-DOPENGL_VERSION=OFF" "-DSUPPORT_SCREEN_CAPTURE=ON" "-DSUPPORT_GIF_RECORDING=ON" "-DPLATFORM=Desktop" "-DCMAKE_INSTALL_PREFIX=C:\\Users\\javib\\OneDrive\\Escritorio\\Lab5-\\target\\debug\\build\\raylib-sys-e4b23da93c0021d6\\out" "-DCMAKE_C_FLAGS= -nologo -MD -Brepro" "-DCMAKE_C_FLAGS_DEBUG= -nologo -MD -Brepro" "-DCMAKE_CXX_FLAGS= -nologo -MD -Brepro" "-DCMAKE_CXX_FLAGS_DEBUG= -nologo -MD -Brepro" "-DCMAKE_ASM_FLAGS= -nologo -MD -Brepro" "-DCMAKE_ASM_FLAGS_DEBUG= -nologo -MD -Brepro"
+  -- Testing if -Werror=pointer-arith can be used -- Failed
+  -- Testing if -Werror=implicit-function-declaration can be used -- Failed
+  -- Testing if -fno-strict-aliasing can be used -- Failed
+  -- Using raylib's GLFW
+  -- Including Win32 support
+  -- Audio Backend: miniaudio
+  -- Building raylib static library
+  -- Generated build type: Debug
+  -- Compiling with the flags:
+  --   PLATFORM=PLATFORM_DESKTOP
+  --   GRAPHICS=GRAPHICS_API_OPENGL_33
+  -- Configuring done (0.2s)
+  -- Generating done (0.5s)
+  -- Build files have been written to: C:/Users/javib/OneDrive/Escritorio/Lab5-/target/debug/build/raylib-sys-e4b23da93c0021d6/out/build
+  running: "cmake" "--build" "C:\\Users\\javib\\OneDrive\\Escritorio\\Lab5-\\target\\debug\\build\\raylib-sys-e4b23da93c0021d6\\out\\build" "--target" "install" "--config" "Debug" "--parallel" "12"
+  Versión de MSBuild 17.14.14+a129329f1 para .NET Framework
+
+    glfw.vcxproj -> C:\Users\javib\OneDrive\Escritorio\Lab5-\target\debug\build\raylib-sys-e4b23da93c0021d6\out\build\raylib\external\glfw\src\glfw.dir\Debug\glfw.lib
+    raylib.vcxproj -> C:\Users\javib\OneDrive\Escritorio\Lab5-\target\debug\build\raylib-sys-e4b23da93c0021d6\out\build\raylib\Debug\raylib.lib
+    1>
+    -- Install configuration: "Debug"
+    -- Up-to-date: C:/Users/javib/OneDrive/Escritorio/Lab5-/target/debug/build/raylib-sys-e4b23da93c0021d6/out/lib/raylib.lib
+    -- Up-to-date: C:/Users/javib/OneDrive/Escritorio/Lab5-/target/debug/build/raylib-sys-e4b23da93c0021d6/out/include/raylib.h
+    -- Up-to-date: C:/Users/javib/OneDrive/Escritorio/Lab5-/target/debug/build/raylib-sys-e4b23da93c0021d6/out/include/rlgl.h
+    -- Up-to-date: C:/Users/javib/OneDrive/Escritorio/Lab5-/target/debug/build/raylib-sys-e4b23da93c0021d6/out/include/raymath.h
+    -- Up-to-date: C:/Users/javib/OneDrive/Escritorio/Lab5-/target/debug/build/raylib-sys-e4b23da93c0021d6/out/lib/pkgconfig/raylib.pc
+    -- Up-to-date: C:/Users/javib/OneDrive/Escritorio/Lab5-/target/debug/build/raylib-sys-e4b23da93c0021d6/out/lib/cmake/raylib/raylib-config-version.cmake
+    -- Up-to-date: C:/Users/javib/OneDrive/Escritorio/Lab5-/target/debug/build/raylib-sys-e4b23da93c0021d6/out/lib/cmake/raylib/raylib-config.cmake
+  cargo:root=C:\Users\javib\OneDrive\Escritorio\Lab5-\target\debug\build\raylib-sys-e4b23da93c0021d6\out
+  cargo:rustc-link-search=native=C:\Users\javib\OneDrive\Escritorio\Lab5-\target\debug\build\raylib-sys-e4b23da93c0021d6\out\lib
+
+  --- stderr
+  binding\../raylib/src/raylib.h:88:10: fatal error: 'stdarg.h' file not found
+
+  thread 'main' panicked at C:\Users\javib\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\raylib-sys-5.5.1\build.rs:303:39:
+  Unable to generate bindings: ClangDiagnostic("binding\\../raylib/src/raylib.h:88:10: fatal error: 'stdarg.h' file not found\n")
+  stack backtrace:
+     0: std::panicking::begin_panic_handler
+               at /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library\std\src\panicking.rs:697
+     1: core::panicking::panic_fmt
+               at /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library\core\src\panicking.rs:75
+     2: core::result::unwrap_failed
+               at /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library\core\src\result.rs:1732
+     3: core::ops::function::FnOnce::call_once
+     4: hashbrown::control::group::sse2::Group::convert_special_to_empty_and_full_to_deleted
+     5: hashbrown::control::group::sse2::Group::convert_special_to_empty_and_full_to_deleted
+     6: core::ops::function::FnOnce::call_once
+     7: std::rt::lang_start
+     8: std::rt::lang_start
+     9: std::rt::lang_start_internal::closure$0
+               at /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library\std\src\rt.rs:168
+    10: std::panicking::try::do_call
+               at /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library\std\src\panicking.rs:589
+    11: std::panicking::try
+               at /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library\std\src\panicking.rs:552
+    12: std::panic::catch_unwind
+               at /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library\std\src\panic.rs:359
+    13: std::rt::lang_start_internal
+               at /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library\std\src\rt.rs:164
+    14: std::rt::lang_start
+    15: main
+    16: invoke_main
+               at D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:78
+    17: __scrt_common_main_seh
+               at D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288
+    18: BaseThreadInitThunk
+    19: RtlUserThreadStart
+  note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.

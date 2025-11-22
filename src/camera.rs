@@ -19,6 +19,10 @@ pub struct Camera {
     pub rotation_speed: f32,
     pub zoom_speed: f32,
     pub pan_speed: f32,
+
+    // Planet tracking
+    pub tracking_planet: Option<usize>, // Índice del planeta que se está siguiendo (None = modo libre)
+    pub ecliptic_height: f32, // Altura fija sobre el plano eclíptico
 }
 
 impl Camera {
@@ -34,6 +38,9 @@ impl Camera {
         let pitch = (direction.y / distance).asin();
         let yaw = direction.z.atan2(direction.x);
 
+        // Calcular altura inicial sobre el plano eclíptico (Y=0)
+        let ecliptic_height = eye.y;
+
         Camera {
             eye,
             target,
@@ -44,21 +51,39 @@ impl Camera {
             rotation_speed: 0.05,
             zoom_speed: 0.5,
             pan_speed: 0.1,
+            tracking_planet: None, // Inicialmente no sigue ningún planeta
+            ecliptic_height,
         }
     }
 
     /// Update camera eye position based on yaw, pitch, and distance
+    /// Restringe el movimiento al plano eclíptico (Y constante)
     fn update_eye_position(&mut self) {
-        // Clamp pitch to avoid gimbal lock
-        self.pitch = self.pitch.clamp(-PI / 2.0 + 0.1, PI / 2.0 - 0.1);
+        // Restringir pitch para mantener la cámara en el plano eclíptico
+        // Permitir solo un pequeño ángulo para ver el plano desde arriba
+        self.pitch = self.pitch.clamp(-PI / 6.0, PI / 6.0); // Máximo 30 grados arriba/abajo
 
-        // Calculate camera position using spherical coordinates
-        // x = distance * cos(pitch) * cos(yaw)
-        // y = distance * sin(pitch)
-        // z = distance * cos(pitch) * sin(yaw)
-        self.eye.x = self.target.x + self.distance * self.pitch.cos() * self.yaw.cos();
-        self.eye.y = self.target.y + self.distance * self.pitch.sin();
-        self.eye.z = self.target.z + self.distance * self.pitch.cos() * self.yaw.sin();
+        // Calcular posición de la cámara en el plano eclíptico
+        // La altura Y se mantiene constante (ecliptic_height)
+        let horizontal_distance = self.distance * self.pitch.cos();
+        self.eye.x = self.target.x + horizontal_distance * self.yaw.cos();
+        self.eye.y = self.target.y + self.ecliptic_height; // Altura fija sobre el plano eclíptico
+        self.eye.z = self.target.z + horizontal_distance * self.yaw.sin();
+    }
+
+    /// Configurar la cámara para seguir un planeta específico
+    pub fn track_planet(&mut self, planet_index: Option<usize>) {
+        self.tracking_planet = planet_index;
+    }
+
+    /// Actualizar el target para seguir el planeta que se está rastreando
+    /// Si tracking_planet es None, sigue el sol (centro)
+    pub fn update_planet_tracking(&mut self, planet_position: Vector3) {
+        // Suavizar el seguimiento del planeta o sol
+        let smoothing = 0.1;
+        self.target.x += (planet_position.x - self.target.x) * smoothing;
+        self.target.y = planet_position.y; // Mantener en el plano eclíptico (Y=0)
+        self.target.z += (planet_position.z - self.target.z) * smoothing;
     }
 
     /// Get the view matrix for this camera
@@ -145,14 +170,49 @@ impl Camera {
             self.update_eye_position();
         }
 
-        // Vertical panning
+        // Vertical panning - Restringido para mantener el plano eclíptico
+        // Solo permitir ajuste fino de altura sobre el plano
         if window.is_key_down(KeyboardKey::KEY_R) {
-            self.target.y += self.pan_speed;
+            self.ecliptic_height += self.pan_speed * 0.5; // Movimiento más lento
+            self.ecliptic_height = self.ecliptic_height.clamp(5.0, 50.0); // Limitar altura
             self.update_eye_position();
         }
         if window.is_key_down(KeyboardKey::KEY_F) {
-            self.target.y -= self.pan_speed;
+            self.ecliptic_height -= self.pan_speed * 0.5;
+            self.ecliptic_height = self.ecliptic_height.clamp(5.0, 50.0);
             self.update_eye_position();
         }
+
+        // Restringir el target al plano eclíptico (Y=0)
+        self.target.y = 0.0;
+    }
+
+    /// Obtener el índice del planeta que se está siguiendo
+    pub fn get_tracking_planet(&self) -> Option<usize> {
+        self.tracking_planet
+    }
+
+    /// Teletransportar la cámara a una nueva posición y target
+    pub fn warp_to(&mut self, new_position: Vector3, new_target: Vector3) {
+        // Calcular nueva distancia y ángulos
+        let direction = Vector3::new(
+            new_position.x - new_target.x,
+            new_position.y - new_target.y,
+            new_position.z - new_target.z,
+        );
+        let distance = (direction.x * direction.x + direction.y * direction.y + direction.z * direction.z).sqrt();
+        let pitch = (direction.y / distance.max(0.0001)).asin();
+        let yaw = direction.z.atan2(direction.x);
+
+        // Actualizar posición y parámetros
+        self.eye = new_position;
+        self.target = new_target;
+        self.distance = distance;
+        self.pitch = pitch;
+        self.yaw = yaw;
+        self.ecliptic_height = new_position.y;
+        
+        // Actualizar posición del ojo basada en los nuevos parámetros
+        self.update_eye_position();
     }
 }
