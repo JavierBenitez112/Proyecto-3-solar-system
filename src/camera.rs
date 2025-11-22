@@ -48,9 +48,9 @@ impl Camera {
             yaw,
             pitch,
             distance,
-            rotation_speed: 0.05,
-            zoom_speed: 0.5,
-            pan_speed: 0.1,
+            rotation_speed: 0.02,  // Velocidad de rotación reducida
+            zoom_speed: 0.2,        // Velocidad de zoom reducida
+            pan_speed: 0.15,       // Velocidad de movimiento con flechas (aumentada)
             tracking_planet: None, // Inicialmente no sigue ningún planeta
             ecliptic_height,
         }
@@ -58,7 +58,7 @@ impl Camera {
 
     /// Update camera eye position based on yaw, pitch, and distance
     /// Restringe el movimiento al plano eclíptico (Y constante)
-    fn update_eye_position(&mut self) {
+    pub fn update_eye_position(&mut self) {
         // Restringir pitch para mantener la cámara en el plano eclíptico
         // Permitir solo un pequeño ángulo para ver el plano desde arriba
         self.pitch = self.pitch.clamp(-PI / 6.0, PI / 6.0); // Máximo 30 grados arriba/abajo
@@ -91,100 +91,101 @@ impl Camera {
         create_view_matrix(self.eye, self.target, self.up)
     }
 
-    /// Process keyboard input to control the camera
+    /// Process keyboard input to control the camera libre (FPS-style)
+    /// Cámara libre que se desplaza por el skybox con zoom fijo
     pub fn process_input(&mut self, window: &RaylibHandle) {
-        // Rotation controls (yaw)
+        // Calcular direcciones de la cámara basadas en yaw y pitch
+        let cos_yaw = self.yaw.cos();
+        let sin_yaw = self.yaw.sin();
+        let cos_pitch = self.pitch.cos();
+        let sin_pitch = self.pitch.sin();
+        
+        // Dirección forward de la cámara
+        let forward = Vector3::new(
+            cos_yaw * cos_pitch,
+            sin_pitch,
+            sin_yaw * cos_pitch,
+        );
+        
+        // Dirección right de la cámara
+        let right = Vector3::new(
+            -sin_yaw,
+            0.0,
+            cos_yaw,
+        );
+        
+        // Dirección up de la cámara (no se usa actualmente, pero se mantiene para futuras extensiones)
+        let _up = Vector3::new(
+            -cos_yaw * sin_pitch,
+            cos_pitch,
+            -sin_yaw * sin_pitch,
+        );
+
+        // Rotation controls (yaw) - A/D
         if window.is_key_down(KeyboardKey::KEY_A) {
             self.yaw += self.rotation_speed;
-            self.update_eye_position();
         }
         if window.is_key_down(KeyboardKey::KEY_D) {
             self.yaw -= self.rotation_speed;
-            self.update_eye_position();
         }
 
-        // Rotation controls (pitch)
+        // Rotation controls (pitch) - W/S
         if window.is_key_down(KeyboardKey::KEY_W) {
             self.pitch += self.rotation_speed;
-            self.update_eye_position();
+            self.pitch = self.pitch.clamp(-PI / 2.0 + 0.1, PI / 2.0 - 0.1); // Limitar pitch
         }
         if window.is_key_down(KeyboardKey::KEY_S) {
             self.pitch -= self.rotation_speed;
-            self.update_eye_position();
+            self.pitch = self.pitch.clamp(-PI / 2.0 + 0.1, PI / 2.0 - 0.1); // Limitar pitch
         }
 
-        // Zoom controls (distance from target) - arrow keys
-        if window.is_key_down(KeyboardKey::KEY_UP) {
-            self.distance -= self.zoom_speed;
-            if self.distance < 0.5 {
-                self.distance = 0.5; // Prevent camera from going too close
-            }
-            self.update_eye_position();
-        }
-        if window.is_key_down(KeyboardKey::KEY_DOWN) {
-            self.distance += self.zoom_speed;
-            self.update_eye_position();
-        }
-
-        // Pan controls (move target/center point)
-        // Calculate right and forward vectors for panning
-        let forward = Vector3::new(
-            self.target.x - self.eye.x,
-            0.0, // Keep on horizontal plane
-            self.target.z - self.eye.z,
-        );
-        let forward_len = (forward.x * forward.x + forward.z * forward.z).sqrt();
-        let forward_normalized = if forward_len > 0.0 {
-            Vector3::new(forward.x / forward_len, 0.0, forward.z / forward_len)
-        } else {
-            Vector3::new(0.0, 0.0, 1.0)
-        };
-
-        let right = Vector3::new(
-            forward_normalized.z,
-            0.0,
-            -forward_normalized.x,
-        );
-
-        // Q/E keys for horizontal panning
+        // Movimiento libre de la cámara (desplazamiento por el skybox)
+        // Q/E para movimiento lateral
         if window.is_key_down(KeyboardKey::KEY_Q) {
-            self.target.x -= right.x * self.pan_speed;
-            self.target.z -= right.z * self.pan_speed;
-            self.update_eye_position();
+            self.eye.x -= right.x * self.pan_speed;
+            self.eye.z -= right.z * self.pan_speed;
         }
         if window.is_key_down(KeyboardKey::KEY_E) {
-            self.target.x += right.x * self.pan_speed;
-            self.target.z += right.z * self.pan_speed;
-            self.update_eye_position();
+            self.eye.x += right.x * self.pan_speed;
+            self.eye.z += right.z * self.pan_speed;
         }
 
-        // Left/Right arrow keys for horizontal panning
+        // Left/Right arrow keys para movimiento lateral
         if window.is_key_down(KeyboardKey::KEY_LEFT) {
-            self.target.x -= right.x * self.pan_speed;
-            self.target.z -= right.z * self.pan_speed;
-            self.update_eye_position();
+            self.eye.x -= right.x * self.pan_speed;
+            self.eye.z -= right.z * self.pan_speed;
         }
         if window.is_key_down(KeyboardKey::KEY_RIGHT) {
-            self.target.x += right.x * self.pan_speed;
-            self.target.z += right.z * self.pan_speed;
-            self.update_eye_position();
+            self.eye.x += right.x * self.pan_speed;
+            self.eye.z += right.z * self.pan_speed;
         }
 
-        // Vertical panning - Restringido para mantener el plano eclíptico
-        // Solo permitir ajuste fino de altura sobre el plano
+        // Up/Down arrow keys para movimiento forward/backward
+        if window.is_key_down(KeyboardKey::KEY_UP) {
+            self.eye.x += forward.x * self.pan_speed;
+            self.eye.y += forward.y * self.pan_speed;
+            self.eye.z += forward.z * self.pan_speed;
+        }
+        if window.is_key_down(KeyboardKey::KEY_DOWN) {
+            self.eye.x -= forward.x * self.pan_speed;
+            self.eye.y -= forward.y * self.pan_speed;
+            self.eye.z -= forward.z * self.pan_speed;
+        }
+
+        // R/F para movimiento vertical
         if window.is_key_down(KeyboardKey::KEY_R) {
-            self.ecliptic_height += self.pan_speed * 0.5; // Movimiento más lento
-            self.ecliptic_height = self.ecliptic_height.clamp(5.0, 50.0); // Limitar altura
-            self.update_eye_position();
+            self.eye.y += self.pan_speed;
         }
         if window.is_key_down(KeyboardKey::KEY_F) {
-            self.ecliptic_height -= self.pan_speed * 0.5;
-            self.ecliptic_height = self.ecliptic_height.clamp(5.0, 50.0);
-            self.update_eye_position();
+            self.eye.y -= self.pan_speed;
         }
 
-        // Restringir el target al plano eclíptico (Y=0)
-        self.target.y = 0.0;
+        // Zoom fijo - no se permite cambiar la distancia
+        // La distancia se mantiene constante
+        self.distance = 20.0; // Distancia fija para vista tercera persona
+        
+        // El target se actualiza en main.rs después de posicionar la nave
+        // No actualizamos el target aquí para evitar conflictos
     }
 
     /// Obtener el índice del planeta que se está siguiendo

@@ -968,6 +968,7 @@ pub fn fragment_shader_planet(fragment: &Fragment, uniforms: &Uniforms, planet_t
         PlanetType::Ring => shader_rings(fragment, time),
         PlanetType::Moon => shader_moon(fragment, time),
         PlanetType::Sun => shader_sun(fragment, time),
+        PlanetType::Ship => shader_ship(fragment, time),
     }
 }
 
@@ -1052,6 +1053,27 @@ pub fn shader_ice_planet(fragment: &Fragment, time: f32) -> Vector3 {
     )
 }
 
+/// Nave Espacial: Shader Gris Mejorado para Visibilidad
+/// Shader optimizado pero con mejor visibilidad para la nave
+pub fn shader_ship(fragment: &Fragment, _time: f32) -> Vector3 {
+    let base_color = fragment.color;
+    
+    // Color gris metálico más brillante para mejor visibilidad
+    let ship_gray = Vector3::new(0.7, 0.7, 0.75); // Gris metálico más claro
+    
+    // Aplicar iluminación con un mínimo de brillo para asegurar visibilidad
+    let min_brightness = 0.3; // Brillo mínimo para que siempre sea visible
+    let brightness = base_color.x.max(base_color.y).max(base_color.z);
+    let final_brightness = brightness.max(min_brightness);
+    
+    // Color final con mejor contraste
+    Vector3::new(
+        (ship_gray.x * final_brightness * 1.2).min(1.0),
+        (ship_gray.y * final_brightness * 1.2).min(1.0),
+        (ship_gray.z * final_brightness * 1.2).min(1.0),
+    )
+}
+
 /// Planeta 5: Planeta Volcánico (MÚLTIPLES CAPAS)
 /// CAPA 1: Superficie de lava y roca fundida
 /// CAPA 2: Flujos de lava animados
@@ -1132,4 +1154,5 @@ pub enum PlanetType {
     Ring,       // Para anillos (usa shader especial)
     Moon,       // Para luna (usa shader especial)
     Sun,        // Para el sol (shader especial avanzado)
+    Ship,       // Para la nave espacial (shader gris eficiente)
 }
