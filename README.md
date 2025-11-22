@@ -5,9 +5,9 @@ Simulador de sistema solar con nave espacial explorable en Rust usando Raylib.
 ## Video
 https://youtu.be/R_lt5QnPfRA
 
+<img width="782" height="611" alt="image" src="https://github.com/user-attachments/assets/b74a01cb-c4d5-4271-a94e-cfcf0ff55d16" />
 
-image.png
-image.png
+<img width="788" height="621" alt="image" src="https://github.com/user-attachments/assets/03e87f59-4e27-4efd-aab2-e0a740a2f327" />
 
 
 ## Requisitos
